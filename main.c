@@ -325,25 +325,60 @@ int main()
     for(i=0; i<row; i++){
         for(j=0; j<col; j++){
             //printf("%c %d ",map[i][j],i*col+j);
-            if(j+1 < col && map[i][j] == 'C' && map[i][j+1] != 'N'){
-                for(int level=0; level<4; level++){
-                    if(level == 0 || level >= 2){
-                        printf("->Connecting %d with %d\n",6*level+(i*col+j), 6*level+(i*col+j+1));
-                        addEdge(graph, 6*level+(i*col+j), 6*level+(i*col+j+1), 1);
-                    }
+            if(map[i][j] == 'C'){
+                if(j+1 < col && map[i][j+1] != 'N'){ //right
+                    for(int level=0; level<4; level++)
+                        if(level == 0 || (level & 2) > 0){
+                            printf("->Connecting %d with %d\n",6*level+(i*col+j), 6*level+(i*col+j+1));
+                            addEdge(graph, 6*level+(i*col+j), 6*level+(i*col+j+1), 1);
+                        }
                 }
-            }
-            if(i+1 < row && map[i][j] == 'C' && map[i+1][j] != 'N'){
-                for(int level=0; level<4; level++){
-                    if(level == 0 || level >= 2){
-                        printf("V Connecting %d with %d\n",6*level+(i*col+j), 6*level+((i+1)*col+j));
-                        addEdge(graph, 6*level+(i*col+j), 6*level+((i+1)*col+j), 1);
-                    }
+                if(i+1 < row && map[i+1][j] != 'N'){ //down
+                    for(int level=0; level<4; level++)
+                        if(level == 0 || (level & 2) > 0){
+                            printf("V Connecting %d with %d\n",6*level+(i*col+j), 6*level+((i+1)*col+j));
+                            addEdge(graph, 6*level+(i*col+j), 6*level+((i+1)*col+j), 1);
+                        }
                 }
             }
             if(map[i][j] == 'D'){
                 printf("D Connecting %d with %d\n",(i*col+j), 6*2+(i*col+j));
                 addEdge(graph, (i*col+j), 6*2+(i*col+j), 0);
+                if(j+1 < col && map[i][j+1] != 'N'){ //right
+                    for(int level=0; level<4; level++)
+                        if(level == 0 || (level & 2) > 0){
+                            printf("->Connecting %d with %d\n",6*level+(i*col+j), 6*level+(i*col+j+1));
+                            addEdge(graph, 6*level+(i*col+j), 6*level+(i*col+j+1), 1);
+                        }
+                }
+                if(i+1 < row && map[i+1][j] != 'N'){ //down
+                    for(int level=0; level<4; level++)
+                        if(level == 0 || (level & 2) > 0){
+                            printf("V Connecting %d with %d\n",6*level+(i*col+j), 6*level+((i+1)*col+j));
+                            addEdge(graph, 6*level+(i*col+j), 6*level+((i+1)*col+j), 1);
+                        }
+                }
+            }
+            if(map[i][j] == 'P'){
+                for(int level=0; level<4; level++)
+                    if((level & 2) > 0 && (level & 1) == 0){
+                        printf("P Connecting %d with %d\n",6*level+(i*col+j), 6*(level | 1)+(i*col+j));
+                        addEdge(graph, 6*level+(i*col+j), 6*(level | 1)+(i*col+j), 0);
+                    }
+                if(j+1 < col && map[i][j+1] != 'N'){ //right
+                    for(int level=0; level<4; level++)
+                        if(level == 0 || (level & 2) > 0){
+                            printf("->Connecting %d with %d\n",6*level+(i*col+j), 6*level+(i*col+j+1));
+                            addEdge(graph, 6*level+(i*col+j), 6*level+(i*col+j+1), 1);
+                        }
+                }
+                if(i+1 < row && map[i+1][j] != 'N'){ //down
+                    for(int level=0; level<4; level++)
+                        if(level == 0 || (level & 2) > 0){
+                            printf("V Connecting %d with %d\n",6*level+(i*col+j), 6*level+((i+1)*col+j));
+                            addEdge(graph, 6*level+(i*col+j), 6*level+((i+1)*col+j), 1);
+                        }
+                }
             }
         }
         //printf("\n");

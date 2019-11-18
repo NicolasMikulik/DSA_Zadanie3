@@ -15,6 +15,10 @@ V Connecting 19 with 22
 V Connecting 2 with 5
 V Connecting 14 with 17
 V Connecting 20 with 23
+P Connecting 15 with 21
+->Connecting 3 with 4
+->Connecting 15 with 16
+->Connecting 21 with 22
 ->Connecting 4 with 5
 ->Connecting 16 with 17
 ->Connecting 22 with 23
@@ -35,12 +39,12 @@ Vertex   Distance from Source
 12 		 6
 13 		 5
 14 		 4
-15 		 7
+15 		 5
 16 		 4
 17 		 3
-18 		 2147483647
-19 		 2147483647
-20 		 2147483647
-21 		 2147483647
-22 		 2147483647
-23 		 2147483647
+18 		 6
+19 		 7
+20 		 8
+21 		 5
+22 		 6
+23 		 7
