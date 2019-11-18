@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <limits.h>
 
 typedef struct {
     int x; // 4 B
@@ -13,26 +14,21 @@ typedef struct {
 } STR; // 24 B
 
 //STR x[100][100][512];
-char a[1280000];
 int *zachran_princezne(char **mapa, int n, int m, int t, int *dlzka_cesty)
 {
     // sem napis svoje riesenie
     //char vertex[1280000][10]; //chyba, nemoze byt lokalna
-    /*for(int i=0; i<n; i++){
-      for(int j=0; j<m; j++)
-        printf("%c ",mapa[i][j]);
-      printf("\n");
-    }*/
+    for(int i=0; i<n; i++){
+        for(int j=0; j<m; j++)
+            printf("%c ",mapa[i][j]);
+        printf("\n");
+    }
 
     int *p = (int*)malloc(100*sizeof(int));
     for(int i=0;i<100;i++)
         p[i] = 0;
     return p;
 }
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
 
 // A structure to represent a node in adjacency list
 struct AdjListNode
@@ -319,6 +315,7 @@ int main()
     int row=2, col=3;
     char map[2][3] = {{'C', 'C', 'C'},
                       {'P', 'C', 'D'}};
+
     int i=0, j=0;
     for(i=0; i<row; i++){
         for(j=0; j<col; j++)

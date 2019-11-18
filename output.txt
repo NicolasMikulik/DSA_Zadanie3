@@ -1,0 +1,46 @@
+C C C
+P C D
+->Connecting 0 with 1
+->Connecting 12 with 13
+->Connecting 18 with 19
+V Connecting 0 with 3
+V Connecting 12 with 15
+V Connecting 18 with 21
+->Connecting 1 with 2
+->Connecting 13 with 14
+->Connecting 19 with 20
+V Connecting 1 with 4
+V Connecting 13 with 16
+V Connecting 19 with 22
+V Connecting 2 with 5
+V Connecting 14 with 17
+V Connecting 20 with 23
+->Connecting 4 with 5
+->Connecting 16 with 17
+->Connecting 22 with 23
+D Connecting 5 with 17
+Vertex   Distance from Source
+0 		 0
+1 		 1
+2 		 2
+3 		 1
+4 		 2
+5 		 3
+6 		 2147483647
+7 		 2147483647
+8 		 2147483647
+9 		 2147483647
+10 		 2147483647
+11 		 2147483647
+12 		 6
+13 		 5
+14 		 4
+15 		 7
+16 		 4
+17 		 3
+18 		 2147483647
+19 		 2147483647
+20 		 2147483647
+21 		 2147483647
+22 		 2147483647
+23 		 2147483647
