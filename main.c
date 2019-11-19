@@ -196,32 +196,20 @@ struct MinHeapNode* extractMin(struct MinHeap* minHeap)
     return root;
 }
 
-// Function to decreasy dist value of a given vertex v. This function
-// uses pos[] of min heap to get the current index of node in min heap
 void decreaseKey(struct MinHeap* minHeap, int v, int dist)
 {
-    // Get the index of v in  heap array
     int i = minHeap->pos[v];
-
-    // Get the node and update its dist value
     minHeap->array[i]->dist = dist;
 
-    // Travel up while the complete tree is not hepified.
-    // This is a O(Logn) loop
     while (i && minHeap->array[i]->dist < minHeap->array[(i - 1) / 2]->dist)
     {
-        // Swap this node with its parent
         minHeap->pos[minHeap->array[i]->v] = (i-1)/2;
         minHeap->pos[minHeap->array[(i-1)/2]->v] = i;
         swapMinHeapNode(&minHeap->array[i],  &minHeap->array[(i - 1) / 2]);
-
-        // move to parent index
         i = (i - 1) / 2;
     }
 }
 
-// A utility function to check if a given vertex
-// 'v' is in min heap or not
 bool isInMinHeap(struct MinHeap *minHeap, int v)
 {
     if (minHeap->pos[v] < minHeap->size)
@@ -229,7 +217,6 @@ bool isInMinHeap(struct MinHeap *minHeap, int v)
     return false;
 }
 
-// A utility function used to print the solution
 void printArr(int dist[], int n)
 {
     printf("Vertex   Distance from Source\n");
@@ -237,19 +224,17 @@ void printArr(int dist[], int n)
         printf("%d \t\t %d\n", i, dist[i]);
 }
 
-// The main function that calulates distances of shortest paths from src to all
-// vertices. It is a O(ELogV) function
-void dijkstra(struct Graph* graph, int src)
+int *dijkstra(struct Graph* graph, int src)
 {
     int V = graph->V;// Get the number of vertices in graph
     int dist[V];      // dist values used to pick minimum weight edge in cut
-
-    // minHeap represents set E
+    int *parent = (int *)malloc(V*sizeof(int));
     struct MinHeap* minHeap = createMinHeap(V);
 
     // Initialize min heap with all vertices. dist value of all vertices
     for (int v = 0; v < V; ++v)
     {
+        parent[v] = -1;
         dist[v] = INT_MAX;
         minHeap->array[v] = newMinHeapNode(v, dist[v]);
         minHeap->pos[v] = v;
@@ -285,16 +270,15 @@ void dijkstra(struct Graph* graph, int src)
                 pCrawl->weight + dist[u] < dist[v])
             {
                 dist[v] = dist[u] + pCrawl->weight;
-
+                parent[v] = u;
                 // update distance value in min heap also
                 decreaseKey(minHeap, v, dist[v]);
             }
             pCrawl = pCrawl->next;
         }
     }
-
-    // print the calculated shortest distances
     printArr(dist, V);
+    return parent;
 }
 
 int *zachran_princezne(char **mapa, int n, int m, int t, int *dlzka_cesty)
@@ -303,101 +287,127 @@ int *zachran_princezne(char **mapa, int n, int m, int t, int *dlzka_cesty)
     int mapsize = n*m;
     struct Graph* graph = createGraph(vertices);
     int i=0, j=0, row=n, col=m;
-    for(i=0; i<n; i++){
-        for(j=0; j<m; j++)
+    for(i=0; i<col; i++){
+        for(j=0; j<row; j++)
             printf("%c ",mapa[i][j]);
         printf("\n");
     }
-    for(i=0; i<row; i++){
-        for(j=0; j<col; j++){
+    for(i=0; i<col; i++){
+        for(j=0; j<row; j++){
             //printf("%c %d ",mapa[i][j],i*col+j);
-            if(mapa[i][j] == 'C'){ //cesta
-                if(j+1 < col && mapa[i][j+1] != 'N'){ //right
+            if(mapa[j][i] == 'C'){ //cesta
+                if(i+1 < col && mapa[j][i+1] != 'N'){ //right
                     for(int level=0; level<16; level++)
                         if(level == 0 || (level & D) > 0){
-                            printf("->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 1);
+                            printf("C->Connecting %d with %d\n",mapsize*level+(j*col+i), mapsize*level+(j*col+i+1));
+                            addEdge(graph, mapsize*level+(j*col+i), mapsize*level+(j*col+i+1), 1);
+                        }
+                }
+                if(j+1 < row && mapa[j+1][i] != 'N'){ //down
+                    for(int level=0; level<16; level++)
+                        if(level == 0 || (level & D) > 0){
+                            printf("CV Connecting %d with %d\n",mapsize*level+(j*col+i), mapsize*level+((j+1)*col+i));
+                            addEdge(graph, mapsize*level+(j*col+i), mapsize*level+((j+1)*col+i), 1);
+                        }
+                }
+            }
+            if(mapa[j][i] == 'H'){ //cesta
+                if(i+1 < col && mapa[j][i+1] != 'N'){ //right
+                    for(int level=0; level<16; level++)
+                        if(level == 0 || (level & D) > 0){
+                            printf("H->Connecting %d with %d\n",mapsize*level+(j*col+i), mapsize*level+(j*col+i+1));
+                            addEdge(graph, mapsize*level+(j*col+i), mapsize*level+(j*col+i+1), 2);
+                        }
+                }
+                if(j+1 < row && mapa[j+1][i] != 'N'){ //down
+                    for(int level=0; level<16; level++)
+                        if(level == 0 || (level & D) > 0){
+                            printf("HV Connecting %d with %d\n",mapsize*level+(j*col+i), mapsize*level+((j+1)*col+i));
+                            addEdge(graph, mapsize*level+(j*col+i), mapsize*level+((j+1)*col+i), 2);
+                        }
+                }
+            }
+            if(mapa[j][i] == 'D'){ //drak
+                printf("D Connecting %d with %d\n",(j*col+i), mapsize*D+(j*col+i));
+                addEdge(graph, (j*col+i), mapsize*D+(j*col+i), 0);
+                if(i+1 < col && mapa[j][i+1] != 'N'){ //right
+                    for(int level=0; level<16; level++)
+                        if(level == 0 || (level & D) > 0){
+                            printf("D->Connecting %d with %d\n",mapsize*level+(j*col+i), mapsize*level+(j*col+i+1));
+                            addEdge(graph, mapsize*level+(j*col+i), mapsize*level+(j*col+i+1), 1);
                         }
                 }
                 if(i+1 < row && mapa[i+1][j] != 'N'){ //down
                     for(int level=0; level<16; level++)
                         if(level == 0 || (level & D) > 0){
-                            printf("V Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 1);
+                            printf("DV Connecting %d with %d\n",mapsize*level+(j*col+i), mapsize*level+((j+1)*col+i));
+                            addEdge(graph, mapsize*level+(j*col+i), mapsize*level+((j+1)*col+i), 1);
                         }
                 }
             }
-            if(mapa[i][j] == 'H'){ //cesta
-                if(j+1 < col && mapa[i][j+1] != 'N'){ //right
-                    for(int level=0; level<16; level++)
-                        if(level == 0 || (level & D) > 0){
-                            printf("->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 2);
-                        }
-                }
-                if(i+1 < row && mapa[i+1][j] != 'N'){ //down
-                    for(int level=0; level<16; level++)
-                        if(level == 0 || (level & D) > 0){
-                            printf("V Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 2);
-                        }
-                }
-            }
-            if(mapa[i][j] == 'D'){ //drak
-                printf("D Connecting %d with %d\n",(i*col+j), mapsize*2+(i*col+j));
-                addEdge(graph, (i*col+j), mapsize*D+(i*col+j), 0);
-                if(j+1 < col && mapa[i][j+1] != 'N'){ //right
-                    for(int level=0; level<16; level++)
-                        if(level == 0 || (level & D) > 0){
-                            printf("->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 1);
-                        }
-                }
-                if(i+1 < row && mapa[i+1][j] != 'N'){ //down
-                    for(int level=0; level<16; level++)
-                        if(level == 0 || (level & D) > 0){
-                            printf("V Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 1);
-                        }
-                }
-            }
-            if(mapa[i][j] == 'P'){ //princezne
+            if(mapa[j][i] == 'P'){ //princezne
                 for(int level=0; level<16; level++){
-                    if((level & D) > 0 && (level & P1) == 0){
-                        printf("P Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*(level | P1)+(i*col+j));
-                        addEdge(graph, mapsize*level+(i*col+j), mapsize*(level | P1)+(i*col+j), 0);
+                    if((level & D) > 0 && (level & P1) == 0 && (mapsize*level+(j*col+i) != mapsize*(level | P1)+(j*col+i))){
+                        printf("P Connecting %d with %d\n",mapsize*level+(j*col+i), mapsize*(level | P1)+(j*col+i));
+                        addEdge(graph, mapsize*level+(j*col+i), mapsize*(level | P1)+(j*col+i), 0);
                     }
-                    if((level & D) > 0 && (level & P2) == 0){
-                        printf("P Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*(level | P2)+(i*col+j));
-                        addEdge(graph, mapsize*level+(i*col+j), mapsize*(level | P2)+(i*col+j), 0);
+                    if((level & D) > 0 && (level & P2) == 0 && (mapsize*level+(j*col+i) != mapsize*(level | P2)+(j*col+i))){
+                        printf("P Connecting %d with %d\n",mapsize*level+(j*col+i), mapsize*(level | P2)+(j*col+i));
+                        addEdge(graph, mapsize*level+(j*col+i), mapsize*(level | P2)+(j*col+i), 0);
                     }
-                    if((level & D) > 0 && (level & P1) == 0){
-                        printf("P Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*(level | P3)+(i*col+j));
-                        addEdge(graph, mapsize*level+(i*col+j), mapsize*(level | P3)+(i*col+j), 0);
+                    if((level & D) > 0 && (level & P3) == 0 && (mapsize*level+(j*col+i) != mapsize*(level | P3)+(j*col+i))){
+                        printf("P Connecting %d with %d\n",mapsize*level+(j*col+i), mapsize*(level | P3)+(j*col+i));
+                        addEdge(graph, mapsize*level+(j*col+i), mapsize*(level | P3)+(j*col+i), 0);
                     }
                 }
-                if(j+1 < col && mapa[i][j+1] != 'N'){ //right
+                if(i+1 < col && mapa[j][i+1] != 'N'){ //right
                     for(int level=0; level<16; level++)
                         if(level == 0 || (level & D) > 0){
-                            printf("->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 1);
+                            printf("P->Connecting %d with %d\n",mapsize*level+(j*col+i), mapsize*level+(j*col+i+1));
+                            addEdge(graph, mapsize*level+(j*col+i), mapsize*level+(j*col+i+1), 1);
                         }
                 }
-                if(i+1 < row && mapa[i+1][j] != 'N'){ //down
+                if(j+1 < row && mapa[j+1][i] != 'N'){ //down
                     for(int level=0; level<16; level++)
                         if(level == 0 || (level & D) > 0){
-                            printf("V Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 1);
+                            printf("PV Connecting %d with %d\n",mapsize*level+(j*col+i), mapsize*level+((j+1)*col+i));
+                            addEdge(graph, mapsize*level+(j*col+i), mapsize*level+((j+1)*col+i), 1);
                         }
                 }
             }
         }
     }
-    dijkstra(graph, 0);
+    int *parent_array = dijkstra(graph, 0);
+    i = 375; int x = 0, y = 0, count = 0;
     int *p = (int*)malloc(100*sizeof(int));
-    for(int i=0;i<100;i++)
-        p[i] = 0;
-    return p;
+    while(parent_array[i] != -1){
+        x = (i % mapsize)/col;
+        y = (i % mapsize)%col;
+        printf("%d %d %d %d\n", i, parent_array[i], x, y);
+        i = parent_array[i];
+        if(count > 0 && p[count-2] == x && p[count-1] == y){
+            printf("NO\n");}
+        else{
+            p[count++]=x;
+            p[count++]=y;
+        }
+    }
+    p[count++]=0;
+    p[count++]=0;
+    printf("Count %d\n", count);
+    /*for(i=0;i<count/2;i++){
+        j=p[i];
+        p[i]=p[count-1-i];
+        p[count-1-i]=j;
+    }*/
+    int *arr = (int*)malloc(count*sizeof(int));
+    for(i=0;i<count;i+=2){
+        arr[i]=p[count-i-2]; //x
+        arr[i+1]=p[count-i-1]; //y
+    }
+    for(i=0;i<count;i+=2)
+        printf("%d %d\n", arr[i], arr[i+1]);
+    return arr;
 }
 
 // Vlastna funkcia main() je pre vase osobne testovanie. Dolezite: pri testovacich scenaroch sa nebude spustat!

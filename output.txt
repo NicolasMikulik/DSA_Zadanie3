@@ -9,399 +9,408 @@ P Connecting 200 with 225
 P Connecting 200 with 250
 P Connecting 200 with 300
 P Connecting 225 with 275
+P Connecting 225 with 325
 P Connecting 250 with 275
 P Connecting 250 with 350
+P Connecting 275 with 375
 P Connecting 300 with 325
 P Connecting 300 with 350
-P Connecting 300 with 300
 P Connecting 325 with 375
 P Connecting 350 with 375
-P Connecting 350 with 350
-->Connecting 0 with 1
-->Connecting 200 with 201
-->Connecting 225 with 226
-->Connecting 250 with 251
-->Connecting 275 with 276
-->Connecting 300 with 301
-->Connecting 325 with 326
-->Connecting 350 with 351
-->Connecting 375 with 376
-V Connecting 0 with 5
-V Connecting 200 with 205
-V Connecting 225 with 230
-V Connecting 250 with 255
-V Connecting 275 with 280
-V Connecting 300 with 305
-V Connecting 325 with 330
-V Connecting 350 with 355
-V Connecting 375 with 380
+P->Connecting 0 with 1
+P->Connecting 200 with 201
+P->Connecting 225 with 226
+P->Connecting 250 with 251
+P->Connecting 275 with 276
+P->Connecting 300 with 301
+P->Connecting 325 with 326
+P->Connecting 350 with 351
+P->Connecting 375 with 376
+PV Connecting 0 with 5
+PV Connecting 200 with 205
+PV Connecting 225 with 230
+PV Connecting 250 with 255
+PV Connecting 275 with 280
+PV Connecting 300 with 305
+PV Connecting 325 with 330
+PV Connecting 350 with 355
+PV Connecting 375 with 380
+H->Connecting 5 with 6
+H->Connecting 205 with 206
+H->Connecting 230 with 231
+H->Connecting 255 with 256
+H->Connecting 280 with 281
+H->Connecting 305 with 306
+H->Connecting 330 with 331
+H->Connecting 355 with 356
+H->Connecting 380 with 381
+HV Connecting 5 with 10
+HV Connecting 205 with 210
+HV Connecting 230 with 235
+HV Connecting 255 with 260
+HV Connecting 280 with 285
+HV Connecting 305 with 310
+HV Connecting 330 with 335
+HV Connecting 355 with 360
+HV Connecting 380 with 385
+C->Connecting 10 with 11
+C->Connecting 210 with 211
+C->Connecting 235 with 236
+C->Connecting 260 with 261
+C->Connecting 285 with 286
+C->Connecting 310 with 311
+C->Connecting 335 with 336
+C->Connecting 360 with 361
+C->Connecting 385 with 386
+CV Connecting 10 with 15
+CV Connecting 210 with 215
+CV Connecting 235 with 240
+CV Connecting 260 with 265
+CV Connecting 285 with 290
+CV Connecting 310 with 315
+CV Connecting 335 with 340
+CV Connecting 360 with 365
+CV Connecting 385 with 390
+C->Connecting 15 with 16
+C->Connecting 215 with 216
+C->Connecting 240 with 241
+C->Connecting 265 with 266
+C->Connecting 290 with 291
+C->Connecting 315 with 316
+C->Connecting 340 with 341
+C->Connecting 365 with 366
+C->Connecting 390 with 391
+CV Connecting 15 with 20
+CV Connecting 215 with 220
+CV Connecting 240 with 245
+CV Connecting 265 with 270
+CV Connecting 290 with 295
+CV Connecting 315 with 320
+CV Connecting 340 with 345
+CV Connecting 365 with 370
+CV Connecting 390 with 395
+H->Connecting 20 with 21
+H->Connecting 220 with 221
+H->Connecting 245 with 246
+H->Connecting 270 with 271
+H->Connecting 295 with 296
+H->Connecting 320 with 321
+H->Connecting 345 with 346
+H->Connecting 370 with 371
+H->Connecting 395 with 396
 P Connecting 201 with 226
 P Connecting 201 with 251
 P Connecting 201 with 301
 P Connecting 226 with 276
+P Connecting 226 with 326
 P Connecting 251 with 276
 P Connecting 251 with 351
+P Connecting 276 with 376
 P Connecting 301 with 326
 P Connecting 301 with 351
-P Connecting 301 with 301
 P Connecting 326 with 376
 P Connecting 351 with 376
-P Connecting 351 with 351
-->Connecting 1 with 2
-->Connecting 201 with 202
-->Connecting 226 with 227
-->Connecting 251 with 252
-->Connecting 276 with 277
-->Connecting 301 with 302
-->Connecting 326 with 327
-->Connecting 351 with 352
-->Connecting 376 with 377
-V Connecting 1 with 6
-V Connecting 201 with 206
-V Connecting 226 with 231
-V Connecting 251 with 256
-V Connecting 276 with 281
-V Connecting 301 with 306
-V Connecting 326 with 331
-V Connecting 351 with 356
-V Connecting 376 with 381
-->Connecting 2 with 3
-->Connecting 202 with 203
-->Connecting 227 with 228
-->Connecting 252 with 253
-->Connecting 277 with 278
-->Connecting 302 with 303
-->Connecting 327 with 328
-->Connecting 352 with 353
-->Connecting 377 with 378
-V Connecting 2 with 7
-V Connecting 202 with 207
-V Connecting 227 with 232
-V Connecting 252 with 257
-V Connecting 277 with 282
-V Connecting 302 with 307
-V Connecting 327 with 332
-V Connecting 352 with 357
-V Connecting 377 with 382
-->Connecting 3 with 4
-->Connecting 203 with 204
-->Connecting 228 with 229
-->Connecting 253 with 254
-->Connecting 278 with 279
-->Connecting 303 with 304
-->Connecting 328 with 329
-->Connecting 353 with 354
-->Connecting 378 with 379
-V Connecting 3 with 8
-V Connecting 203 with 208
-V Connecting 228 with 233
-V Connecting 253 with 258
-V Connecting 278 with 283
-V Connecting 303 with 308
-V Connecting 328 with 333
-V Connecting 353 with 358
-V Connecting 378 with 383
-V Connecting 4 with 9
-V Connecting 204 with 209
-V Connecting 229 with 234
-V Connecting 254 with 259
-V Connecting 279 with 284
-V Connecting 304 with 309
-V Connecting 329 with 334
-V Connecting 354 with 359
-V Connecting 379 with 384
-->Connecting 5 with 6
-->Connecting 205 with 206
-->Connecting 230 with 231
-->Connecting 255 with 256
-->Connecting 280 with 281
-->Connecting 305 with 306
-->Connecting 330 with 331
-->Connecting 355 with 356
-->Connecting 380 with 381
-V Connecting 5 with 10
-V Connecting 205 with 210
-V Connecting 230 with 235
-V Connecting 255 with 260
-V Connecting 280 with 285
-V Connecting 305 with 310
-V Connecting 330 with 335
-V Connecting 355 with 360
-V Connecting 380 with 385
-->Connecting 6 with 7
-->Connecting 206 with 207
-->Connecting 231 with 232
-->Connecting 256 with 257
-->Connecting 281 with 282
-->Connecting 306 with 307
-->Connecting 331 with 332
-->Connecting 356 with 357
-->Connecting 381 with 382
-V Connecting 6 with 11
-V Connecting 206 with 211
-V Connecting 231 with 236
-V Connecting 256 with 261
-V Connecting 281 with 286
-V Connecting 306 with 311
-V Connecting 331 with 336
-V Connecting 356 with 361
-V Connecting 381 with 386
-->Connecting 7 with 8
-->Connecting 207 with 208
-->Connecting 232 with 233
-->Connecting 257 with 258
-->Connecting 282 with 283
-->Connecting 307 with 308
-->Connecting 332 with 333
-->Connecting 357 with 358
-->Connecting 382 with 383
-V Connecting 7 with 12
-V Connecting 207 with 212
-V Connecting 232 with 237
-V Connecting 257 with 262
-V Connecting 282 with 287
-V Connecting 307 with 312
-V Connecting 332 with 337
-V Connecting 357 with 362
-V Connecting 382 with 387
-->Connecting 8 with 9
-->Connecting 208 with 209
-->Connecting 233 with 234
-->Connecting 258 with 259
-->Connecting 283 with 284
-->Connecting 308 with 309
-->Connecting 333 with 334
-->Connecting 358 with 359
-->Connecting 383 with 384
-V Connecting 8 with 13
-V Connecting 208 with 213
-V Connecting 233 with 238
-V Connecting 258 with 263
-V Connecting 283 with 288
-V Connecting 308 with 313
-V Connecting 333 with 338
-V Connecting 358 with 363
-V Connecting 383 with 388
-V Connecting 9 with 14
-V Connecting 209 with 214
-V Connecting 234 with 239
-V Connecting 259 with 264
-V Connecting 284 with 289
-V Connecting 309 with 314
-V Connecting 334 with 339
-V Connecting 359 with 364
-V Connecting 384 with 389
-->Connecting 10 with 11
-->Connecting 210 with 211
-->Connecting 235 with 236
-->Connecting 260 with 261
-->Connecting 285 with 286
-->Connecting 310 with 311
-->Connecting 335 with 336
-->Connecting 360 with 361
-->Connecting 385 with 386
-V Connecting 10 with 15
-V Connecting 210 with 215
-V Connecting 235 with 240
-V Connecting 260 with 265
-V Connecting 285 with 290
-V Connecting 310 with 315
-V Connecting 335 with 340
-V Connecting 360 with 365
-V Connecting 385 with 390
-->Connecting 11 with 12
-->Connecting 211 with 212
-->Connecting 236 with 237
-->Connecting 261 with 262
-->Connecting 286 with 287
-->Connecting 311 with 312
-->Connecting 336 with 337
-->Connecting 361 with 362
-->Connecting 386 with 387
-V Connecting 11 with 16
-V Connecting 211 with 216
-V Connecting 236 with 241
-V Connecting 261 with 266
-V Connecting 286 with 291
-V Connecting 311 with 316
-V Connecting 336 with 341
-V Connecting 361 with 366
-V Connecting 386 with 391
-->Connecting 12 with 13
-->Connecting 212 with 213
-->Connecting 237 with 238
-->Connecting 262 with 263
-->Connecting 287 with 288
-->Connecting 312 with 313
-->Connecting 337 with 338
-->Connecting 362 with 363
-->Connecting 387 with 388
-V Connecting 12 with 17
-V Connecting 212 with 217
-V Connecting 237 with 242
-V Connecting 262 with 267
-V Connecting 287 with 292
-V Connecting 312 with 317
-V Connecting 337 with 342
-V Connecting 362 with 367
-V Connecting 387 with 392
-->Connecting 13 with 14
-->Connecting 213 with 214
-->Connecting 238 with 239
-->Connecting 263 with 264
-->Connecting 288 with 289
-->Connecting 313 with 314
-->Connecting 338 with 339
-->Connecting 363 with 364
-->Connecting 388 with 389
-V Connecting 13 with 18
-V Connecting 213 with 218
-V Connecting 238 with 243
-V Connecting 263 with 268
-V Connecting 288 with 293
-V Connecting 313 with 318
-V Connecting 338 with 343
-V Connecting 363 with 368
-V Connecting 388 with 393
-V Connecting 14 with 19
-V Connecting 214 with 219
-V Connecting 239 with 244
-V Connecting 264 with 269
-V Connecting 289 with 294
-V Connecting 314 with 319
-V Connecting 339 with 344
-V Connecting 364 with 369
-V Connecting 389 with 394
-->Connecting 15 with 16
-->Connecting 215 with 216
-->Connecting 240 with 241
-->Connecting 265 with 266
-->Connecting 290 with 291
-->Connecting 315 with 316
-->Connecting 340 with 341
-->Connecting 365 with 366
-->Connecting 390 with 391
-V Connecting 15 with 20
-V Connecting 215 with 220
-V Connecting 240 with 245
-V Connecting 265 with 270
-V Connecting 290 with 295
-V Connecting 315 with 320
-V Connecting 340 with 345
-V Connecting 365 with 370
-V Connecting 390 with 395
-->Connecting 16 with 17
-->Connecting 216 with 217
-->Connecting 241 with 242
-->Connecting 266 with 267
-->Connecting 291 with 292
-->Connecting 316 with 317
-->Connecting 341 with 342
-->Connecting 366 with 367
-->Connecting 391 with 392
-V Connecting 16 with 21
-V Connecting 216 with 221
-V Connecting 241 with 246
-V Connecting 266 with 271
-V Connecting 291 with 296
-V Connecting 316 with 321
-V Connecting 341 with 346
-V Connecting 366 with 371
-V Connecting 391 with 396
-->Connecting 17 with 18
-->Connecting 217 with 218
-->Connecting 242 with 243
-->Connecting 267 with 268
-->Connecting 292 with 293
-->Connecting 317 with 318
-->Connecting 342 with 343
-->Connecting 367 with 368
-->Connecting 392 with 393
-V Connecting 17 with 22
-V Connecting 217 with 222
-V Connecting 242 with 247
-V Connecting 267 with 272
-V Connecting 292 with 297
-V Connecting 317 with 322
-V Connecting 342 with 347
-V Connecting 367 with 372
-V Connecting 392 with 397
-->Connecting 18 with 19
-->Connecting 218 with 219
-->Connecting 243 with 244
-->Connecting 268 with 269
-->Connecting 293 with 294
-->Connecting 318 with 319
-->Connecting 343 with 344
-->Connecting 368 with 369
-->Connecting 393 with 394
-V Connecting 18 with 23
-V Connecting 218 with 223
-V Connecting 243 with 248
-V Connecting 268 with 273
-V Connecting 293 with 298
-V Connecting 318 with 323
-V Connecting 343 with 348
-V Connecting 368 with 373
-V Connecting 393 with 398
-V Connecting 19 with 24
-V Connecting 219 with 224
-V Connecting 244 with 249
-V Connecting 269 with 274
-V Connecting 294 with 299
-V Connecting 319 with 324
-V Connecting 344 with 349
-V Connecting 369 with 374
-V Connecting 394 with 399
-->Connecting 20 with 21
-->Connecting 220 with 221
-->Connecting 245 with 246
-->Connecting 270 with 271
-->Connecting 295 with 296
-->Connecting 320 with 321
-->Connecting 345 with 346
-->Connecting 370 with 371
-->Connecting 395 with 396
+P->Connecting 1 with 2
+P->Connecting 201 with 202
+P->Connecting 226 with 227
+P->Connecting 251 with 252
+P->Connecting 276 with 277
+P->Connecting 301 with 302
+P->Connecting 326 with 327
+P->Connecting 351 with 352
+P->Connecting 376 with 377
+PV Connecting 1 with 6
+PV Connecting 201 with 206
+PV Connecting 226 with 231
+PV Connecting 251 with 256
+PV Connecting 276 with 281
+PV Connecting 301 with 306
+PV Connecting 326 with 331
+PV Connecting 351 with 356
+PV Connecting 376 with 381
+C->Connecting 6 with 7
+C->Connecting 206 with 207
+C->Connecting 231 with 232
+C->Connecting 256 with 257
+C->Connecting 281 with 282
+C->Connecting 306 with 307
+C->Connecting 331 with 332
+C->Connecting 356 with 357
+C->Connecting 381 with 382
+CV Connecting 6 with 11
+CV Connecting 206 with 211
+CV Connecting 231 with 236
+CV Connecting 256 with 261
+CV Connecting 281 with 286
+CV Connecting 306 with 311
+CV Connecting 331 with 336
+CV Connecting 356 with 361
+CV Connecting 381 with 386
+C->Connecting 11 with 12
+C->Connecting 211 with 212
+C->Connecting 236 with 237
+C->Connecting 261 with 262
+C->Connecting 286 with 287
+C->Connecting 311 with 312
+C->Connecting 336 with 337
+C->Connecting 361 with 362
+C->Connecting 386 with 387
+CV Connecting 11 with 16
+CV Connecting 211 with 216
+CV Connecting 236 with 241
+CV Connecting 261 with 266
+CV Connecting 286 with 291
+CV Connecting 311 with 316
+CV Connecting 336 with 341
+CV Connecting 361 with 366
+CV Connecting 386 with 391
+H->Connecting 16 with 17
+H->Connecting 216 with 217
+H->Connecting 241 with 242
+H->Connecting 266 with 267
+H->Connecting 291 with 292
+H->Connecting 316 with 317
+H->Connecting 341 with 342
+H->Connecting 366 with 367
+H->Connecting 391 with 392
+HV Connecting 16 with 21
+HV Connecting 216 with 221
+HV Connecting 241 with 246
+HV Connecting 266 with 271
+HV Connecting 291 with 296
+HV Connecting 316 with 321
+HV Connecting 341 with 346
+HV Connecting 366 with 371
+HV Connecting 391 with 396
 P Connecting 221 with 246
 P Connecting 221 with 271
 P Connecting 221 with 321
 P Connecting 246 with 296
+P Connecting 246 with 346
 P Connecting 271 with 296
 P Connecting 271 with 371
+P Connecting 296 with 396
 P Connecting 321 with 346
 P Connecting 321 with 371
-P Connecting 321 with 321
 P Connecting 346 with 396
 P Connecting 371 with 396
-P Connecting 371 with 371
-->Connecting 21 with 22
-->Connecting 221 with 222
-->Connecting 246 with 247
-->Connecting 271 with 272
-->Connecting 296 with 297
-->Connecting 321 with 322
-->Connecting 346 with 347
-->Connecting 371 with 372
-->Connecting 396 with 397
-->Connecting 22 with 23
-->Connecting 222 with 223
-->Connecting 247 with 248
-->Connecting 272 with 273
-->Connecting 297 with 298
-->Connecting 322 with 323
-->Connecting 347 with 348
-->Connecting 372 with 373
-->Connecting 397 with 398
-D Connecting 23 with 73
-->Connecting 23 with 24
-->Connecting 223 with 224
-->Connecting 248 with 249
-->Connecting 273 with 274
-->Connecting 298 with 299
-->Connecting 323 with 324
-->Connecting 348 with 349
-->Connecting 373 with 374
-->Connecting 398 with 399
+P->Connecting 21 with 22
+P->Connecting 221 with 222
+P->Connecting 246 with 247
+P->Connecting 271 with 272
+P->Connecting 296 with 297
+P->Connecting 321 with 322
+P->Connecting 346 with 347
+P->Connecting 371 with 372
+P->Connecting 396 with 397
+H->Connecting 2 with 3
+H->Connecting 202 with 203
+H->Connecting 227 with 228
+H->Connecting 252 with 253
+H->Connecting 277 with 278
+H->Connecting 302 with 303
+H->Connecting 327 with 328
+H->Connecting 352 with 353
+H->Connecting 377 with 378
+HV Connecting 2 with 7
+HV Connecting 202 with 207
+HV Connecting 227 with 232
+HV Connecting 252 with 257
+HV Connecting 277 with 282
+HV Connecting 302 with 307
+HV Connecting 327 with 332
+HV Connecting 352 with 357
+HV Connecting 377 with 382
+H->Connecting 7 with 8
+H->Connecting 207 with 208
+H->Connecting 232 with 233
+H->Connecting 257 with 258
+H->Connecting 282 with 283
+H->Connecting 307 with 308
+H->Connecting 332 with 333
+H->Connecting 357 with 358
+H->Connecting 382 with 383
+HV Connecting 7 with 12
+HV Connecting 207 with 212
+HV Connecting 232 with 237
+HV Connecting 257 with 262
+HV Connecting 282 with 287
+HV Connecting 307 with 312
+HV Connecting 332 with 337
+HV Connecting 357 with 362
+HV Connecting 382 with 387
+H->Connecting 12 with 13
+H->Connecting 212 with 213
+H->Connecting 237 with 238
+H->Connecting 262 with 263
+H->Connecting 287 with 288
+H->Connecting 312 with 313
+H->Connecting 337 with 338
+H->Connecting 362 with 363
+H->Connecting 387 with 388
+HV Connecting 12 with 17
+HV Connecting 212 with 217
+HV Connecting 237 with 242
+HV Connecting 262 with 267
+HV Connecting 287 with 292
+HV Connecting 312 with 317
+HV Connecting 337 with 342
+HV Connecting 362 with 367
+HV Connecting 387 with 392
+C->Connecting 17 with 18
+C->Connecting 217 with 218
+C->Connecting 242 with 243
+C->Connecting 267 with 268
+C->Connecting 292 with 293
+C->Connecting 317 with 318
+C->Connecting 342 with 343
+C->Connecting 367 with 368
+C->Connecting 392 with 393
+CV Connecting 17 with 22
+CV Connecting 217 with 222
+CV Connecting 242 with 247
+CV Connecting 267 with 272
+CV Connecting 292 with 297
+CV Connecting 317 with 322
+CV Connecting 342 with 347
+CV Connecting 367 with 372
+CV Connecting 392 with 397
+C->Connecting 22 with 23
+C->Connecting 222 with 223
+C->Connecting 247 with 248
+C->Connecting 272 with 273
+C->Connecting 297 with 298
+C->Connecting 322 with 323
+C->Connecting 347 with 348
+C->Connecting 372 with 373
+C->Connecting 397 with 398
+H->Connecting 3 with 4
+H->Connecting 203 with 204
+H->Connecting 228 with 229
+H->Connecting 253 with 254
+H->Connecting 278 with 279
+H->Connecting 303 with 304
+H->Connecting 328 with 329
+H->Connecting 353 with 354
+H->Connecting 378 with 379
+HV Connecting 3 with 8
+HV Connecting 203 with 208
+HV Connecting 228 with 233
+HV Connecting 253 with 258
+HV Connecting 278 with 283
+HV Connecting 303 with 308
+HV Connecting 328 with 333
+HV Connecting 353 with 358
+HV Connecting 378 with 383
+H->Connecting 8 with 9
+H->Connecting 208 with 209
+H->Connecting 233 with 234
+H->Connecting 258 with 259
+H->Connecting 283 with 284
+H->Connecting 308 with 309
+H->Connecting 333 with 334
+H->Connecting 358 with 359
+H->Connecting 383 with 384
+HV Connecting 8 with 13
+HV Connecting 208 with 213
+HV Connecting 233 with 238
+HV Connecting 258 with 263
+HV Connecting 283 with 288
+HV Connecting 308 with 313
+HV Connecting 333 with 338
+HV Connecting 358 with 363
+HV Connecting 383 with 388
+C->Connecting 13 with 14
+C->Connecting 213 with 214
+C->Connecting 238 with 239
+C->Connecting 263 with 264
+C->Connecting 288 with 289
+C->Connecting 313 with 314
+C->Connecting 338 with 339
+C->Connecting 363 with 364
+C->Connecting 388 with 389
+CV Connecting 13 with 18
+CV Connecting 213 with 218
+CV Connecting 238 with 243
+CV Connecting 263 with 268
+CV Connecting 288 with 293
+CV Connecting 313 with 318
+CV Connecting 338 with 343
+CV Connecting 363 with 368
+CV Connecting 388 with 393
+H->Connecting 18 with 19
+H->Connecting 218 with 219
+H->Connecting 243 with 244
+H->Connecting 268 with 269
+H->Connecting 293 with 294
+H->Connecting 318 with 319
+H->Connecting 343 with 344
+H->Connecting 368 with 369
+H->Connecting 393 with 394
+HV Connecting 18 with 23
+HV Connecting 218 with 223
+HV Connecting 243 with 248
+HV Connecting 268 with 273
+HV Connecting 293 with 298
+HV Connecting 318 with 323
+HV Connecting 343 with 348
+HV Connecting 368 with 373
+HV Connecting 393 with 398
+D Connecting 23 with 223
+D->Connecting 23 with 24
+D->Connecting 223 with 224
+D->Connecting 248 with 249
+D->Connecting 273 with 274
+D->Connecting 298 with 299
+D->Connecting 323 with 324
+D->Connecting 348 with 349
+D->Connecting 373 with 374
+D->Connecting 398 with 399
+DV Connecting 23 with 28
+DV Connecting 223 with 228
+DV Connecting 248 with 253
+DV Connecting 273 with 278
+DV Connecting 298 with 303
+DV Connecting 323 with 328
+DV Connecting 348 with 353
+DV Connecting 373 with 378
+DV Connecting 398 with 403
+HV Connecting 4 with 9
+HV Connecting 204 with 209
+HV Connecting 229 with 234
+HV Connecting 254 with 259
+HV Connecting 279 with 284
+HV Connecting 304 with 309
+HV Connecting 329 with 334
+HV Connecting 354 with 359
+HV Connecting 379 with 384
+CV Connecting 9 with 14
+CV Connecting 209 with 214
+CV Connecting 234 with 239
+CV Connecting 259 with 264
+CV Connecting 284 with 289
+CV Connecting 309 with 314
+CV Connecting 334 with 339
+CV Connecting 359 with 364
+CV Connecting 384 with 389
+CV Connecting 14 with 19
+CV Connecting 214 with 219
+CV Connecting 239 with 244
+CV Connecting 264 with 269
+CV Connecting 289 with 294
+CV Connecting 314 with 319
+CV Connecting 339 with 344
+CV Connecting 364 with 369
+CV Connecting 389 with 394
+CV Connecting 19 with 24
+CV Connecting 219 with 224
+CV Connecting 244 with 249
+CV Connecting 269 with 274
+CV Connecting 294 with 299
+CV Connecting 319 with 324
+CV Connecting 344 with 349
+CV Connecting 369 with 374
+CV Connecting 394 with 399
 Vertex   Distance from Source
 0 		 0
 1 		 1
@@ -431,7 +440,7 @@ Vertex   Distance from Source
 25 		 2147483647
 26 		 2147483647
 27 		 2147483647
-28 		 2147483647
+28 		 9
 29 		 2147483647
 30 		 2147483647
 31 		 2147483647
@@ -603,13 +612,13 @@ Vertex   Distance from Source
 197 		 2147483647
 198 		 2147483647
 199 		 2147483647
-200 		 16
-201 		 15
-202 		 16
+200 		 13
+201 		 12
+202 		 13
 203 		 15
 204 		 14
-205 		 16
-206 		 14
+205 		 14
+206 		 13
 207 		 14
 208 		 13
 209 		 12
@@ -628,21 +637,21 @@ Vertex   Distance from Source
 222 		 9
 223 		 8
 224 		 9
-225 		 16
-226 		 15
-227 		 16
-228 		 18
-229 		 18
-230 		 16
-231 		 14
-232 		 15
-233 		 16
-234 		 16
+225 		 13
+226 		 12
+227 		 11
+228 		 9
+229 		 11
+230 		 14
+231 		 13
+232 		 13
+233 		 11
+234 		 13
 235 		 14
 236 		 13
 237 		 14
-238 		 14
-239 		 15
+238 		 13
+239 		 14
 240 		 13
 241 		 12
 242 		 12
@@ -653,15 +662,15 @@ Vertex   Distance from Source
 247 		 11
 248 		 12
 249 		 13
-250 		 16
-251 		 15
-252 		 16
-253 		 18
-254 		 18
-255 		 16
-256 		 14
-257 		 15
-258 		 16
+250 		 13
+251 		 12
+252 		 13
+253 		 13
+254 		 15
+255 		 14
+256 		 13
+257 		 14
+258 		 15
 259 		 16
 260 		 14
 261 		 13
@@ -678,15 +687,15 @@ Vertex   Distance from Source
 272 		 11
 273 		 12
 274 		 13
-275 		 16
-276 		 15
-277 		 16
-278 		 18
-279 		 18
-280 		 16
-281 		 14
-282 		 15
-283 		 16
+275 		 13
+276 		 12
+277 		 13
+278 		 13
+279 		 15
+280 		 14
+281 		 13
+282 		 14
+283 		 15
 284 		 16
 285 		 14
 286 		 13
@@ -703,15 +712,15 @@ Vertex   Distance from Source
 297 		 11
 298 		 12
 299 		 13
-300 		 16
-301 		 15
-302 		 16
-303 		 18
-304 		 18
-305 		 16
-306 		 14
-307 		 15
-308 		 16
+300 		 13
+301 		 12
+302 		 13
+303 		 13
+304 		 15
+305 		 14
+306 		 13
+307 		 14
+308 		 15
 309 		 16
 310 		 14
 311 		 13
@@ -728,15 +737,15 @@ Vertex   Distance from Source
 322 		 11
 323 		 12
 324 		 13
-325 		 16
-326 		 15
-327 		 16
-328 		 18
-329 		 18
-330 		 16
-331 		 14
-332 		 15
-333 		 16
+325 		 13
+326 		 12
+327 		 13
+328 		 13
+329 		 15
+330 		 14
+331 		 13
+332 		 14
+333 		 15
 334 		 16
 335 		 14
 336 		 13
@@ -753,15 +762,15 @@ Vertex   Distance from Source
 347 		 11
 348 		 12
 349 		 13
-350 		 16
-351 		 15
-352 		 16
-353 		 18
-354 		 18
-355 		 16
-356 		 14
-357 		 15
-358 		 16
+350 		 13
+351 		 12
+352 		 13
+353 		 13
+354 		 15
+355 		 14
+356 		 13
+357 		 14
+358 		 15
 359 		 16
 360 		 14
 361 		 13
@@ -778,15 +787,15 @@ Vertex   Distance from Source
 372 		 11
 373 		 12
 374 		 13
-375 		 16
-376 		 15
-377 		 16
-378 		 18
-379 		 18
-380 		 16
-381 		 14
-382 		 15
-383 		 16
+375 		 13
+376 		 12
+377 		 13
+378 		 13
+379 		 15
+380 		 14
+381 		 13
+382 		 14
+383 		 15
 384 		 16
 385 		 14
 386 		 13
@@ -803,8 +812,45 @@ Vertex   Distance from Source
 397 		 11
 398 		 12
 399 		 13
-CHYBA: 2*i=2 policko=(x=0,y=0) nepovoleny presun!
+375 376 0 0
+376 276 0 1
+276 226 0 1
+NO
+226 227 0 1
+NO
+227 228 0 2
+228 223 0 3
+223 23 4 3
+23 22 4 3
+NO
+22 17 4 2
+17 16 3 2
+16 11 3 1
+11 6 2 1
+6 1 1 1
+1 0 0 1
+Count 24
+0 0
+0 1
+1 1
+2 1
+3 1
+3 2
+4 2
+4 3
+0 3
+0 2
+0 1
+0 0
+CHYBA: 2*i=16 policko=(x=0,y=3) nepovoleny presun!
 CESTA JE CHYBNA:
 cas 0 -> policko 'P' (x=0,y=0)
-cas 1 -> policko 'P' (x=0,y=0)
-CHYBA: 2*i=2 policko=(x=0,y=0) nepovoleny presun!
+cas 1 -> policko 'H' (x=0,y=1)
+cas 3 -> policko 'C' (x=1,y=1)
+cas 4 -> policko 'H' (x=2,y=1)
+cas 6 -> policko 'H' (x=3,y=1)
+cas 8 -> policko 'C' (x=3,y=2)
+cas 9 -> policko 'C' (x=4,y=2)
+cas 10 -> policko 'C' (x=4,y=3)
+cas 11 -> policko 'C' (x=0,y=3)
+CHYBA: 2*i=16 policko=(x=0,y=3) nepovoleny presun!
