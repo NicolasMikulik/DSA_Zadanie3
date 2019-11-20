@@ -419,9 +419,9 @@ int *zachran_princezne(char **mapa, int n, int m, int t, int *dlzka_cesty)
 int main()
 {
     char mapa[5][5] = {
-            {'P', 'P', 'H', 'H', 'H'},
+            {'C', 'P', 'H', 'H', 'H'},
             {'H', 'C', 'H', 'H', 'C'},
-            {'C', 'C', 'H', 'C', 'C'},
+            {'C', 'C', 'P', 'C', 'C'},
             {'C', 'H', 'C', 'H', 'C'},
             {'H', 'P', 'C', 'D', 'C'} };
     int n=5, m=5;
@@ -535,7 +535,7 @@ int main()
         }
     }
     int *parent_array = dijkstra(graph, 0);
-    i = 375; int x = 0, y = 0, count = 0;
+    i = 387; int x = 0, y = 0, count = 0;
     int *p = (int*)malloc(100*sizeof(int));
     while(parent_array[i] != -1){
         x = (i % mapsize)/col;
