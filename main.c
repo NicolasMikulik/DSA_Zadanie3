@@ -224,7 +224,7 @@ void printArr(int dist[], int n)
         printf("%d \t\t %d\n", i, dist[i]);
 }
 
-int *dijkstra(struct Graph* graph, int src)
+int *dijkstra(struct Graph* graph, int src, int *princess_dist)
 {
     int V = graph->V;// Get the number of vertices in graph
     int dist[V];      // dist values used to pick minimum weight edge in cut
@@ -277,25 +277,38 @@ int *dijkstra(struct Graph* graph, int src)
             pCrawl = pCrawl->next;
         }
     }
-    printArr(dist, V);
+    int min=INT_MAX, select=-1;
+    for(int i=1; i<7; i+=2){
+        if(dist[princess_dist[i]]<min){
+            min=dist[princess_dist[i]];
+            select=princess_dist[i];
+        }
+    }
+    princess_dist[0] = select;
+    //printArr(dist, V);
     return parent;
 }
 
 int *zachran_princezne(char **mapa, int n, int m, int t, int *dlzka_cesty)
 {
+    int *princess_dist = (int*)malloc(7*sizeof(int));
+    int princess_dist_count = 1;
     int vertices = n*m*16; //width*height*status
     int mapsize = n*m;
     struct Graph* graph = createGraph(vertices);
     int i=0, j=0, row=n, col=m, princess_position[6], princess_found=3;
     for(i=0; i<0; i++)
         princess_position[i] = -1;
+    for(i=0; i<7; i++) princess_dist[i] = -1;
     for(i=0; i<row; i++){
         for(j=0; j<col; j++){
             if(mapa[i][j] == 'P'){
                 princess_found--;
                 princess_position[princess_found*2] = i;    //x coordinate of princess
                 princess_position[princess_found*2 + 1] = j;//y coordinate of princess
-                //printf("Princess found at %d %d\n", i, j);
+                printf("Princess found at %d %d\n", i, j);
+                princess_dist[princess_dist_count] = mapsize*15+(i*col+j);
+                princess_dist_count += 2;
             }
             printf("%c ",mapa[i][j]);
         }
@@ -392,8 +405,8 @@ int *zachran_princezne(char **mapa, int n, int m, int t, int *dlzka_cesty)
             }
         }
     }
-    int *parent_array = dijkstra(graph, 0);
-    i = 375; int x = 0, y = 0, count = 0;
+    int *parent_array = dijkstra(graph, 0, princess_dist);
+    i = princess_dist[0]; int x = 0, y = 0, count = 0;
     int *p = (int*)malloc(100*sizeof(int));
     while(parent_array[i] != -1){
         x = (i % mapsize)/col;
@@ -530,6 +543,6 @@ int main()
             }
         }
     }
-    dijkstra(graph, 0);
+    //dijkstra(graph, 0);
     return 0;
 }
