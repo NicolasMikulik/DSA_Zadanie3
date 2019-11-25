@@ -4,10 +4,10 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <limits.h>
-#define D 8
+/*#define D 8
 #define P3 4
 #define P2 2
-#define P1 1
+#define P1 1*/
 
 typedef struct {
     int x; // 4 B
@@ -249,6 +249,7 @@ int *dijkstra(struct Graph* graph, int src, int *princess_dist)
 
 int *zachran_princezne(char **mapa, int n, int m, int t, int *dlzka_cesty)
 {
+    int D=8, P3=4, P2=2, P1=1, G=0;
     int *princess_dist = (int*)malloc(7*sizeof(int));
     int princess_dist_count = 1;
     int vertices = n*m*16; //width*height*status
@@ -260,11 +261,13 @@ int *zachran_princezne(char **mapa, int n, int m, int t, int *dlzka_cesty)
     for(i=0; i<7; i++) princess_dist[i] = -1;
     for(i=0; i<row; i++){
         for(j=0; j<col; j++){
+            if(mapa[i][j] == 'G')
+                G = 16;
             if(mapa[i][j] == 'P'){
                 princess_found--;
                 princess_position[princess_found*2] = i;    //x coordinate of princess
                 princess_position[princess_found*2 + 1] = j;//y coordinate of princess
-                printf("Princess found at %d %d\n", i, j);
+                //printf("Princess found at %d %d\n", i, j);
                 princess_dist[princess_dist_count] = mapsize*15+(i*col+j);
                 princess_dist_count += 2;
             }
@@ -272,100 +275,288 @@ int *zachran_princezne(char **mapa, int n, int m, int t, int *dlzka_cesty)
         }
         printf("\n");
     }
-    for(i=0; i<row; i++){
-        for(j=0; j<col; j++){
-            //printf("%c %d ",mapa[i][j],i*col+j);
-            if(mapa[i][j] == 'C'){ //cesta
-                if(j+1 < col && mapa[i][j+1] != 'N'){ //right
-                    for(int level=0; level<16; level++)
-                        if(level == 0 || (level & D) > 0){
-                            //printf("->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 1);
-                        }
-                }
-                if(i+1 < row && mapa[i+1][j] != 'N'){ //down
-                    for(int level=0; level<16; level++)
-                        if(level == 0 || (level & D) > 0){
-                            //printf("V Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 1);
-                        }
-                }
-            }
-            if(mapa[i][j] == 'H'){ //cesta
-                if(j+1 < col && mapa[i][j+1] != 'N'){ //right
-                    for(int level=0; level<16; level++)
-                        if(level == 0 || (level & D) > 0){
-                            //printf("->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 2);
-                        }
-                }
-                if(i+1 < row && mapa[i+1][j] != 'N'){ //down
-                    for(int level=0; level<16; level++)
-                        if(level == 0 || (level & D) > 0){
-                            //printf("V Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 2);
-                        }
-                }
-            }
-            if(mapa[i][j] == 'D'){ //drak
-                printf("D Connecting %d with %d\n",(i*col+j), mapsize*2+(i*col+j));
-                addEdge(graph, (i*col+j), mapsize*D+(i*col+j), 0);
-                if(j+1 < col && mapa[i][j+1] != 'N'){ //right
-                    for(int level=0; level<16; level++)
-                        if(level == 0 || (level & D) > 0){
-                            //printf("->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 1);
-                        }
-                }
-                if(i+1 < row && mapa[i+1][j] != 'N'){ //down
-                    for(int level=0; level<16; level++)
-                        if(level == 0 || (level & D) > 0){
-                            //printf("V Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 1);
-                        }
-                }
-            }
-            if(mapa[i][j] == 'P'){ //princezne
-                for(int level=0; level<16; level++){
-                    if(i == princess_position[0] && j == princess_position[1]){
-                        if((level & D) > 0 && (level & P1) == 0){
-                            //printf("P Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*(level | P1)+(i*col+j));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*(level | P1)+(i*col+j), 0);
-                        }
+    if(G == 0){
+        for(i=0; i<row; i++){
+            for(j=0; j<col; j++){
+                //printf("%c %d ",mapa[i][j],i*col+j);
+                if(mapa[i][j] == 'C'){ //cesta
+                    if(j+1 < col && mapa[i][j+1] != 'N'){ //right
+                        for(int level=0; level<16; level++)
+                            if(level == 0 || (level & D) > 0){
+                                //printf("->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 1);
+                            }
                     }
-                    if(i == princess_position[2] && j == princess_position[3]){
-                        if((level & D) > 0 && (level & P2) == 0){
-                            //printf("P Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*(level | P2)+(i*col+j));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*(level | P2)+(i*col+j), 0);
-                        }
-                    }
-                    if(i == princess_position[4] && j == princess_position[5]){
-                        if((level & D) > 0 && (level & P3) == 0){
-                            //printf("P Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*(level | P3)+(i*col+j));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*(level | P3)+(i*col+j), 0);
-                        }
+                    if(i+1 < row && mapa[i+1][j] != 'N'){ //down
+                        for(int level=0; level<16; level++)
+                            if(level == 0 || (level & D) > 0){
+                                //printf("V Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 1);
+                            }
                     }
                 }
-                if(j+1 < col && mapa[i][j+1] != 'N'){ //right
-                    for(int level=0; level<16; level++)
-                        if(level == 0 || (level & D) > 0){
-                            //printf("P->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 1);
-                        }
+                if(mapa[i][j] == 'H'){ //cesta
+                    if(j+1 < col && mapa[i][j+1] != 'N'){ //right
+                        for(int level=0; level<16; level++)
+                            if(level == 0 || (level & D) > 0){
+                                //printf("->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 2);
+                            }
+                    }
+                    if(i+1 < row && mapa[i+1][j] != 'N'){ //down
+                        for(int level=0; level<16; level++)
+                            if(level == 0 || (level & D) > 0){
+                                //printf("V Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 2);
+                            }
+                    }
                 }
-                if(i+1 < row && mapa[i+1][j] != 'N'){ //down
-                    for(int level=0; level<16; level++)
-                        if(level == 0 || (level & D) > 0){
-                            //printf("PV Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
-                            addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 1);
+                if(mapa[i][j] == 'D'){ //drak
+                    printf("D Connecting %d with %d\n",(i*col+j), mapsize*2+(i*col+j));
+                    addEdge(graph, (i*col+j), mapsize*D+(i*col+j), 0);
+                    if(j+1 < col && mapa[i][j+1] != 'N'){ //right
+                        for(int level=0; level<16; level++)
+                            if(level == 0 || (level & D) > 0){
+                                //printf("->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 1);
+                            }
+                    }
+                    if(i+1 < row && mapa[i+1][j] != 'N'){ //down
+                        for(int level=0; level<16; level++)
+                            if(level == 0 || (level & D) > 0){
+                                //printf("V Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 1);
+                            }
+                    }
+                }
+                if(mapa[i][j] == 'P'){ //princezne
+                    for(int level=0; level<16; level++){
+                        if(i == princess_position[0] && j == princess_position[1]){
+                            if((level & D) > 0 && (level & P1) == 0){
+                                //printf("P Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*(level | P1)+(i*col+j));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*(level | P1)+(i*col+j), 0);
+                            }
                         }
+                        if(i == princess_position[2] && j == princess_position[3]){
+                            if((level & D) > 0 && (level & P2) == 0){
+                                //printf("P Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*(level | P2)+(i*col+j));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*(level | P2)+(i*col+j), 0);
+                            }
+                        }
+                        if(i == princess_position[4] && j == princess_position[5]){
+                            if((level & D) > 0 && (level & P3) == 0){
+                                //printf("P Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*(level | P3)+(i*col+j));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*(level | P3)+(i*col+j), 0);
+                            }
+                        }
+                    }
+                    if(j+1 < col && mapa[i][j+1] != 'N'){ //right
+                        for(int level=0; level<16; level++)
+                            if(level == 0 || (level & D) > 0){
+                                //printf("P->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 1);
+                            }
+                    }
+                    if(i+1 < row && mapa[i+1][j] != 'N'){ //down
+                        for(int level=0; level<16; level++)
+                            if(level == 0 || (level & D) > 0){
+                                //printf("PV Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 1);
+                            }
+                    }
+                }
+            }
+        }
+    }
+    else {
+        printf("mapsize %d %d\n", mapsize, mapsize*32);
+        G = 16;princess_found=3,princess_dist_count=1; int index=0,ctx=0,tx=0,cty=0,ty=0;
+        int zero_tel[100], zero_tel_count=1, one_tel[100], one_tel_count=1,
+        two_tel[100], two_tel_count=1, three_tel[100], three_tel_count=1;
+        for(i=0;i<100;i++)
+            zero_tel[i]=one_tel[i]=two_tel[i]=three_tel[i]=0;
+        for(i=0; i<row; i++)
+            for(j=0; j<col; j++){
+                if(mapa[i][j] == 'P'){
+                    princess_found--;
+                    princess_position[princess_found*2] = i;    //x coordinate of princess
+                    princess_position[princess_found*2 + 1] = j;//y coordinate of princess
+                    printf("Princess found at %d %d\n", i, j);
+                    princess_dist[princess_dist_count] = mapsize*31+(i*col+j);
+                    princess_dist_count += 2;
+                }
+                if(mapa[i][j] == '0'){
+                zero_tel[0] += 1;
+                zero_tel[zero_tel_count] = i;
+                zero_tel[zero_tel_count+1] = j;
+                printf("0 Teleport found at %d %d\n",i,j);
+                zero_tel_count += 2;
+                }
+                if(mapa[i][j] == '1'){
+                one_tel[0] += 1;
+                one_tel[one_tel_count] = i;
+                one_tel[one_tel_count+1] = j;
+                printf("1 Teleport found at %d %d\n",i,j);
+                one_tel_count += 2;
+                }
+                if(mapa[i][j] == '2'){
+                two_tel[0] += 1;
+                two_tel[two_tel_count] = i;
+                two_tel[two_tel_count+1] = j;
+                printf("2 Teleport found at %d %d\n",i,j);
+                two_tel_count += 2;
+                }
+                if(mapa[i][j] == '3'){
+                three_tel[0] += 1;
+                three_tel[three_tel_count] = i;
+                three_tel[three_tel_count+1] = j;
+                printf("3 Teleport found at %d %d\n",i,j);
+                three_tel_count += 2;
+                }
+            }
+        int vertices = n*m*32; //width*height*status
+        free(graph->array); free(graph);
+        struct Graph* graph = createGraph(vertices);
+        for(i=0; i<row; i++){
+            for(j=0; j<col; j++){
+                //printf("%c %d ",mapa[i][j],i*col+j);
+                if(mapa[i][j] == '0'){ //0 teleport
+                    for(int level=0; level<32; level++)
+                        if((level == G) || (level >= 24)){
+                            ctx=mapsize*level+(i*col+j);
+                            for(index=0;index<zero_tel[0];index++){
+                                tx=mapsize*level+zero_tel[index*2+1]*col+zero_tel[index*2+2];
+                                if(tx != ctx){
+                                    addEdge(graph,ctx,tx,0);
+                                }
+                            }
+                        }
+                    if(j+1 < col && mapa[i][j+1] != 'N'){ //right
+                        for(int level=0; level<32; level++)
+                            if((level == G) || (level >= 24)){
+                                //printf("->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 1);
+                            }
+                    }
+                    if(i+1 < row && mapa[i+1][j] != 'N'){ //down
+                        for(int level=0; level<32; level++)
+                            if((level == G) || (level >= 24)){
+                                //printf("V Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 1);
+                            }
+                    }
+                }
+                if(mapa[i][j] == 'C'){ //cesta
+                    if(j+1 < col && mapa[i][j+1] != 'N'){ //right
+                        for(int level=0; level<32; level++)
+                            if((level == 0) || (level == G) || (level >= 24)){
+                                //printf("->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 1);
+                            }
+                    }
+                    if(i+1 < row && mapa[i+1][j] != 'N'){ //down
+                        for(int level=0; level<32; level++)
+                            if((level == 0) || (level == G) || (level >= 24)){
+                                //printf("V Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 1);
+                            }
+                    }
+                }
+                if(mapa[i][j] == 'H'){ //cesta
+                    if(j+1 < col && mapa[i][j+1] != 'N'){ //right
+                        for(int level=0; level<32; level++)
+                            if((level == 0) || (level == G) || (level >= 24)){
+                                //printf("->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 2);
+                            }
+                    }
+                    if(i+1 < row && mapa[i+1][j] != 'N'){ //down
+                        for(int level=0; level<32; level++)
+                            if((level == 0) || (level == G) || (level >= 24)){
+                                //printf("V Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 2);
+                            }
+                    }
+                }
+                if(mapa[i][j] == 'G'){ //generator
+                    printf("G Connecting %d with %d\n", (i*col+j), mapsize*G+(i*col+j));
+                    addEdge(graph, (i*col+j), mapsize*G+(i*col+j), 0);
+                    if(j+1 < col && mapa[i][j+1] != 'N'){ //right
+                        for(int level=0; level<32; level++)
+                            if((level == 0) || (level == G) || (level >= 24)){
+                                //printf("%d\n", G | D);
+                                printf("G->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 1);
+                            }
+                    }
+                    if(i+1 < row && mapa[i+1][j] != 'N'){ //down
+                        for(int level=0; level<32; level++)
+                            if((level == 0) || (level == G) || (level >= 24)){
+                                printf("GV Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 1);
+                            }
+                    }
+                }
+                if(mapa[i][j] == 'D'){ //drak
+                    printf("D Connecting %d with %d\n",mapsize*G+(i*col+j), mapsize*(G | D)+(i*col+j));
+                    addEdge(graph, mapsize*G+(i*col+j), mapsize*(G | D)+(i*col+j), 0);
+                    if(j+1 < col && mapa[i][j+1] != 'N'){ //right
+                        for(int level=0; level<32; level++)
+                            if((level == 0) || (level == G) || (level >= 24)){
+                                printf("->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 1);
+                            }
+                    }
+                    if(i+1 < row && mapa[i+1][j] != 'N'){ //down
+                        for(int level=0; level<32; level++)
+                            if((level == 0) || (level == G) || (level >= 24)){
+                                printf("V Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 1);
+                            }
+                    }
+                }
+                if(mapa[i][j] == 'P'){ //princezne
+                    for(int level=0; level<32; level++){
+                        if(i == princess_position[0] && j == princess_position[1]){
+                            if((level >= 24) && (level & P1) == 0){
+                                printf("P Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*(level | P1)+(i*col+j));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*(level | P1)+(i*col+j), 0);
+                            }
+                        }
+                        if(i == princess_position[2] && j == princess_position[3]){
+                            if((level >= 24) && (level & P2) == 0){
+                                printf("P Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*(level | P2)+(i*col+j));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*(level | P2)+(i*col+j), 0);
+                            }
+                        }
+                        if(i == princess_position[4] && j == princess_position[5]){
+                            if((level >= 24) && (level & P3) == 0){
+                                printf("P Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*(level | P3)+(i*col+j));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*(level | P3)+(i*col+j), 0);
+                            }
+                        }
+                    }
+                    if(j+1 < col && mapa[i][j+1] != 'N'){ //right
+                        for(int level=0; level<32; level++)
+                            if((level == 0) || (level == G) || (level >= 24)){
+                                //printf("P->Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+(i*col+j+1));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+(i*col+j+1), 1);
+                            }
+                    }
+                    if(i+1 < row && mapa[i+1][j] != 'N'){ //down
+                        for(int level=0; level<32; level++)
+                            if((level == 0) || (level == G) || (level >= 24)){
+                                //printf("PV Connecting %d with %d\n",mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j));
+                                addEdge(graph, mapsize*level+(i*col+j), mapsize*level+((i+1)*col+j), 1);
+                            }
+                    }
                 }
             }
         }
     }
     int *parent_array = dijkstra(graph, 0, princess_dist);
     i = princess_dist[0]; int x = 0, y = 0, count = 0;
-    int *p = (int*)malloc(100*sizeof(int));
+    int *p = (int*)malloc(1660*sizeof(int));
     while(parent_array[i] != -1){
         x = (i % mapsize)/col;
         y = (i % mapsize)%col;
@@ -380,13 +571,14 @@ int *zachran_princezne(char **mapa, int n, int m, int t, int *dlzka_cesty)
     }
     p[count++]=0;
     p[count++]=0;
+    free(princess_dist);
     printf("Count %d\n", count);
     int *arr = (int*)malloc(count*sizeof(int));
-    printf("HELLO\n");
     for(i=0;i<count;i+=2){
         arr[i]=p[count-i-1]; //y
         arr[i+1]=p[count-i-2]; //x
     }
+    free(p);
     *(dlzka_cesty) = count / 2;
     for(i=0;i<count;i+=2)
         printf("%d %d\n", arr[i], arr[i+1]);
